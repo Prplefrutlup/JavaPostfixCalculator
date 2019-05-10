@@ -1,6 +1,25 @@
 package com.prple.postfixcalc;
 
+import java.util.Scanner;
+
 public class Main {
+
+    public static Object evaluatePostfix(String postfix) {
+
+        LinkedStack calculatorStack = new LinkedStack<Integer>();
+
+        Scanner sc = new Scanner(postfix);
+
+
+        while(sc.hasNext()) {
+
+            char nextCharacter;
+
+        }
+
+        return calculatorStack.peek();
+
+    }
 
     public static void main(String [] args) {
 

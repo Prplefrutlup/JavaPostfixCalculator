@@ -2,7 +2,7 @@ package com.prple.postfixcalc;
 
 import java.util.EmptyStackException;
 
-public final class LinkedStack<T> implements StackInterface {
+public final class LinkedStack<Integer> implements StackInterface {
 
     private Node topNode;
 
@@ -11,15 +11,14 @@ public final class LinkedStack<T> implements StackInterface {
         topNode = null;
     }
 
-
     @Override
-    public void push(Object newEntry) {
+    public void push(int newEntry) {
         topNode = new Node(newEntry, topNode);
     }
 
     @Override
-    public Object pop() {
-        Object top = peek();
+    public int pop() {
+        int top = peek();
 
         assert topNode != null;
 
@@ -28,7 +27,7 @@ public final class LinkedStack<T> implements StackInterface {
     }
 
     @Override
-    public Object peek() {
+    public int peek() {
 
         if(isEmpty()) {
             throw new EmptyStackException();
@@ -52,19 +51,19 @@ public final class LinkedStack<T> implements StackInterface {
 
     private class Node {
 
-        private Object data; // Entry in stack
+        private int data; // Entry in stack
         private Node next; // Link to next node
 
-        public Node(Object data, Node next) {
+        public Node(int data, Node next) {
             this.data = data;
             this.next = next;
         }
 
-        public Object getData() {
+        public int getData() {
             return data;
         }
 
-        public void setData(T data) {
+        public void setData(int data) {
             this.data = data;
         }
 

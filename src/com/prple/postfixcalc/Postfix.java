@@ -11,16 +11,17 @@ public class Postfix {
 
         Scanner sc = new Scanner(postfix);
 
-        //scans the characters in the expression one by one
+        /**scans the characters in the expression one by one
+         * if string is scanned , push the integer to the stack
+         * if an operand is scanned, pop two ints and use operand to evaluate,
+         * then push result back to stack
+         */
         while (sc.hasNext()) {
 
-            //if statement to check if character is an operand or string,
-            //if a number - pushed to stack
-            if (sc.hasNext()) {
+                String operands = sc.next();
 
-                String stringToInt = sc.next();
+                switch (operands) {
 
-                switch (stringToInt) {
                     case "data1":
                         int data1 = 1;
                         calculatorStack.push(data1);
@@ -41,54 +42,51 @@ public class Postfix {
                         int data5 = 3;
                         calculatorStack.push(data5);
                         break;
-                }
-            }
-
-            //if characters scanned are operators,
-            // pop 2 elements and apply operator
-            else {
-
-                int operandOne = calculatorStack.pop();
-                int operandTwo = calculatorStack.pop();
-
-                String operands = sc.next();
-
-                switch (operands) {
 
                     case "-":
-                        calculatorStack.push(operandTwo - operandOne);
+                        int operandTwo = calculatorStack.pop();
+                        int operandOne = calculatorStack.pop();
+                        int result = operandOne - operandTwo;
+                        calculatorStack.push(result);
                         break;
 
                     case "+":
-                        calculatorStack.push(operandTwo + operandOne);
+                        operandTwo = calculatorStack.pop();
+                        operandOne = calculatorStack.pop();
+                        result = operandOne + operandTwo;
+                        calculatorStack.push(result);
                         break;
 
                     case "*":
-                        calculatorStack.push(operandTwo * operandOne);
+                        operandTwo = calculatorStack.pop();
+                        operandOne = calculatorStack.pop();
+                        result = operandOne * operandTwo;
+                        calculatorStack.push(result);
                         break;
 
                     case "/":
-                        calculatorStack.push(operandTwo / operandOne);
+                        operandTwo = calculatorStack.pop();
+                        operandOne = calculatorStack.pop();
+                        result = operandOne / operandTwo;
+                        calculatorStack.push(result);
                         break;
                 }
             }
-        }
-
         return calculatorStack.peek();
-
     }
 
     public static void main(String[] args) {
-
-
+        //test postfix strings
         String postfix1 = "data1 data2 + data3 * data4 -";
-
 
         String postfix2 = "data1 data2 * data3 * data1 -/ data4 data5 +";
 
-        System.out.println(evaluatePostfix(postfix1));
+        //evaluatePostfix function call
+        System.out.println("The postfix expression, " + postfix1 + " \n" +
+                "evaluates to " + evaluatePostfix(postfix1));
 
-        System.out.println(evaluatePostfix(postfix2));
+        System.out.println("The postfix expression, " + postfix2 + "\n" +
+                "evaluates to " + evaluatePostfix(postfix2));
 
 
 

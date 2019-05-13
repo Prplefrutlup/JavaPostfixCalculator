@@ -4,11 +4,12 @@ import java.util.Scanner;
 
 public class Postfix {
 
-
     public static int evaluatePostfix(String postfix) {
 
+        //initialize stack to use for postfix expression
         LinkedStack calculatorStack = new LinkedStack<Integer>();
 
+        //scanner to read the postfix expression
         Scanner sc = new Scanner(postfix);
 
         /**scans the characters in the expression one by one
@@ -26,18 +27,22 @@ public class Postfix {
                         int data1 = 1;
                         calculatorStack.push(data1);
                         break;
+
                     case "data2":
                         int data2 = 2;
                         calculatorStack.push(data2);
                         break;
+
                     case "data3":
                         int data3 = 4;
                         calculatorStack.push(data3);
                         break;
+
                     case "data4":
                         int data4 = 5;
                         calculatorStack.push(data4);
                         break;
+
                     case "data5":
                         int data5 = 3;
                         calculatorStack.push(data5);
@@ -87,9 +92,6 @@ public class Postfix {
 
         System.out.println("The postfix expression, " + postfix2 + "\n" +
                 "evaluates to " + evaluatePostfix(postfix2));
-
-
-
     }
 
 }

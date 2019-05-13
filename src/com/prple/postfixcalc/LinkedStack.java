@@ -11,11 +11,13 @@ public final class LinkedStack<Integer> implements StackInterface {
         topNode = null;
     }
 
+    //method to add integer to stack
     @Override
     public void push(int newEntry) {
         topNode = new Node(newEntry, topNode);
     }
 
+    //method to remove and return top integer of stack
     @Override
     public int pop() {
         int top = peek();
@@ -26,6 +28,7 @@ public final class LinkedStack<Integer> implements StackInterface {
         return top;
     }
 
+    //method to retrieve top item of stack w/o altering the stack
     @Override
     public int peek() {
 
@@ -37,17 +40,17 @@ public final class LinkedStack<Integer> implements StackInterface {
         }
     }
 
+    //method to check if the stack is empty
     @Override
     public boolean isEmpty() {
         return topNode == null;
     }
 
+    //method to clear the stack
     @Override
     public void clear() {
         topNode = null;
-
     }
-
 
     private class Node {
 
